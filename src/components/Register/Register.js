@@ -15,7 +15,7 @@ class Register extends Component{
 
     render() {
       if (localStorage.getItem("token")) {
-        return <Redirect to="/Farmer" />;
+        return <Redirect to="/Farmer" />; 
       }
         return (
           <div id="content" className='container'>
