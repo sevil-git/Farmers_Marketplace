@@ -1,0 +1,33 @@
+.farmContent {
+    width: 100vw;
+    border: 1px solid royalblue;
+    margin: 0;
+}
+
+.navv {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(143, 143, 143);
+    box-shadow: 0 8px 26px rgb(46, 46, 46);
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.navv > h2 {
+    font-size: 1.5rem;
+}
+
+.navv >h2 >span {
+    color: #24AE7C;
+}
+
+.navv > button {
+    background: #24AE7C;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}

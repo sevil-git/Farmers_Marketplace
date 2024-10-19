@@ -1,6 +1,6 @@
 import React, { Component  } from 'react';
 import { Redirect, Switch, Route, Link } from "react-router-dom";
-
+import './Farmer.css'
 
 class Farmer extends Component{
 
@@ -32,10 +32,14 @@ class Farmer extends Component{
         return <Redirect to="/Login" />;
       }
         return (
-          <div id="content">
-            <button onClick={this.signOut} href="#">
-              Sign Out
-            </button>
+          <div id="content" className='farmContent'>
+            <nav className='navv'>
+              <h2>Welcome <span>User</span> </h2>
+              <button onClick={this.signOut} href="#">
+                Sign Out
+              </button>
+            </nav>
+            
             <h1>Add Product</h1>
             <form onSubmit={(event) => {
               event.preventDefault()

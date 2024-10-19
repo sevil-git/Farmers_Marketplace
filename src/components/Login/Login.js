@@ -61,42 +61,44 @@ class Login extends Component {
 
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit} className="form-signin">
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <div className="row">
-            <div className="col">
-              <div className="form-group mr-sm-2">
-                <input
-                  id="FarmerID"
-                  name="user_id"
-                  type="text"
-                  ref={(input) => { this.FarmerID = input }}
-                  onChange={this.handleFormChange}
-                  className="form-control"
-                  placeholder="Farmer ID"
-                  required />
+        <div className="card glow">
+          <form onSubmit={this.handleSubmit} className="form-signin">
+            <h1 className="sgnhead h3 mb-3 font-weight-normal">Please Sign In</h1>
+            <div className="row">
+              <div className="col">
+                <div className="form-group mr-sm-2">
+                  <input
+                    id="FarmerID"
+                    name="user_id"
+                    type="text"
+                    ref={(input) => { this.FarmerID = input }}
+                    onChange={this.handleFormChange}
+                    className="form-control"
+                    placeholder="Farmer ID"
+                    required />
+                </div>
+                <div className="form-group mr-sm-2">
+                  <input
+                    id="PhoneNo"
+                    name="user_password"
+                    type="password"
+                    ref={(input) => { this.PhoneNo = input }}
+                    onChange={this.handleFormChange}
+                    className="form-control"
+                    placeholder="Phone Number"
+                    required />
+                </div>
+                <button type="submit" className="btnn">Login</button>
               </div>
-              <div className="form-group mr-sm-2">
-                <input
-                  id="PhoneNo"
-                  name="user_password"
-                  type="password"
-                  ref={(input) => { this.PhoneNo = input }}
-                  onChange={this.handleFormChange}
-                  className="form-control"
-                  placeholder="Phone Number"
-                  required />
+            </div>
+            {this.state.errorMessage && 
+              <div className="alert alert-danger" role="alert">
+                {this.state.errorMessage}
               </div>
-              <button type="submit" className="btn btn-primary">Login</button>
-            </div>
-          </div>
-          {this.state.errorMessage && 
-            <div className="alert alert-danger" role="alert">
-              {this.state.errorMessage}
-            </div>
-          }
-        </form>
-        <p>Don't have an Account..? <a href="/Register">Click here</a></p>
+            }
+          </form>
+          <p>Don't have an Account..? <a href="/Register">Click here</a></p>
+        </div>
       </div>
     );
   }

@@ -7,11 +7,6 @@
     align-items: center;
 }
 
-.login-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .sgnhead {
     margin-top: 1.5rem;
@@ -37,8 +32,8 @@
                  5px 5px 20px 1px #24AE7C;
 }
 
-.col {
-    margin-top: 5rem;
+.form {
+    margin-top: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
