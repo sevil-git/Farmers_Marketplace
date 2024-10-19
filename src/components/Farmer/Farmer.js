@@ -123,24 +123,24 @@ class Farmer extends Component{
                 </div>
                 
                 
-                <div className="form-group">
+                <div className="form-group form-group-quality">
                   <input
                     id="productQuality"
                     type="text"
                     ref={(input) => { this.productQuality = input }}
-                    className="form-control"
+                    className="form-control quality"
                     placeholder="Quality Description"
                     required />
                 </div>
                 <form>
                     <label>Select City:  </label>
                     <select value={this.state.value1} onChange={this.handleChange}>
-                      <option value="Dharwad">Dharwad</option>
-                      <option value="Haliyal">Haliyal</option>
-                      <option value="Dandeli">Dandeli</option>
+                      <option value="Dharwad">Ravet</option>
+                      <option value="Haliyal">Pimpri</option>
+                      <option value="Dandeli">Chinchwad</option>
                     </select>
                 </form>
-                <button type="submit" className="btn btn-primary">Add Product</button>
+                <button type="submit" className="btnn">Add Product</button>
               </form>
             </div>
             
@@ -152,11 +152,13 @@ class Farmer extends Component{
                   <th scope="col">Product ID</th>
                   <th scope="col">Farmer ID</th>
                   <th scope="col">Name</th>
+                  <th scope='col'>Quantity</th>
                   <th scope="col">Price</th>
                   <th scope="col">Owner</th>
                   <th scope="col">City</th>
                   <th scope="col">Is this sold</th>
                   <th scope="col">Quality approved</th>
+                  
                 </tr>
               </thead>
               <tbody id="productList" className='productlist'>
@@ -167,6 +169,7 @@ class Farmer extends Component{
                       <th scope="row">{product.id.toString()}</th>
                       <th scope="roe">{product.farmerID.toString()}</th>
                       <td>{product.name}</td>
+                      <td>{product.quantity}</td>
                       <td>{window.web3.utils.fromWei(product.price.toString(), 'Ether')} Eth</td>
                       <td>{product.owner}</td>
                       <td>{product.city}</td>
