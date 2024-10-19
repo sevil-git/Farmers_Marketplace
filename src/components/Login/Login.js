@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
 import { Redirect } from "react-router-dom";
-import Farmer from "../Farmer/Farmer";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +10,11 @@ class Login extends Component {
       loginParams: {
         user_id: "",
         user_password: ""
-      }
+      },
+      errorMessage: ""
     };
   }
+
   handleFormChange = event => {
     let loginParamsNew = { ...this.state.loginParams };
     let val = event.target.value;
@@ -21,47 +23,39 @@ class Login extends Component {
       loginParams: loginParamsNew
     });
   };
- 
-  
-  login = event => {
-    let user_id = this.state.loginParams.user_id;
-    let user_password = this.state.loginParams.user_password;
-   
-    // if (user_id === farmer.id.toString() && user_password === farmer.phone.toString()) {
-      localStorage.setItem("token", "T");
-      localStorage.setItem("session", user_id);
-      console.log(localStorage.getItem("token"))
-      console.log(localStorage.getItem("session"))
-      this.setState({
-        islogged: true
-      });
-    
+
+  login = (user_id) => {
+    localStorage.setItem("token", "T");
+    localStorage.setItem("session", user_id);
+    this.setState({
+      islogged: true
+    });
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { user_id, user_password } = this.state.loginParams;
+
+    // Find the farmer with matching credentials
+    const farmer = this.props.farmers.find(farmer => 
+      farmer.id.toString() === user_id && farmer.phone.toString() === user_password
+    );
+
+    if (farmer) {
+      this.login(farmer.id);
+    } else {
+      this.setState({ errorMessage: "Invalid ID or Phone Number" });
+    }
+  };
+
   render() {
     if (localStorage.getItem("token")) {
       return <Redirect to="/Farmer" />;
     }
+
     return (
       <div className="container">
-        <form onSubmit={(event) => {
-              event.preventDefault()   
-              let user_id = this.state.loginParams.user_id;
-              let user_password = this.state.loginParams.user_password;
-              const id = this.FarmerID.value
-              const ph = this.PhoneNo.value
-              this.props.farmers.map((farmer, key) => {
-                return(farmer.id==user_id && farmer.phone==user_password
-                  ?
-                  this.login()
-                  
-                  :
-                  console.log(farmer.id),
-                  console.log(farmer.phone),
-                  console.log(user_id),
-                  console.log(user_password)
-                  )
-              })
-            }} className="form-signin">
+        <form onSubmit={this.handleSubmit} className="form-signin">
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
           <div className="row">
             <div className="col">
@@ -78,7 +72,7 @@ class Login extends Component {
               </div>
               <div className="form-group mr-sm-2">
                 <input
-                  id="FarmerID"
+                  id="PhoneNo"
                   name="user_password"
                   type="password"
                   ref={(input) => { this.PhoneNo = input }}
@@ -90,10 +84,16 @@ class Login extends Component {
               <button type="submit" className="btn btn-primary">Login</button>
             </div>
           </div>
+          {this.state.errorMessage && 
+            <div className="alert alert-danger" role="alert">
+              {this.state.errorMessage}
+            </div>
+          }
         </form>
-        <p>Don't have Account..?<a href="/Register">Click here</a></p>
+        <p>Don't have an Account..? <a href="/Register">Click here</a></p>
       </div>
     );
   }
 }
+
 export default Login;

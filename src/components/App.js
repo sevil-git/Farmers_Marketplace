@@ -20,14 +20,18 @@ class App extends Component {
 
   async loadWeb3() {
     if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum)
-      await window.ethereum.enable()
-    }
-    else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider)
-    }
-    else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      try {
+        // Use Ganache's RPC URL to connect MetaMask (or another provider) to Ganache
+        window.web3 = new Web3(window.ethereum);
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+      } catch (error) {
+        console.error("User denied account access");
+      }
+    } else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+    } else {
+      // Ensure you are connecting to Ganache in case MetaMask is not available
+      window.web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545")); // Connect directly to Ganache
     }
   }
 
@@ -37,6 +41,7 @@ class App extends Component {
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
     const networkId = await web3.eth.net.getId()
+    console.log(networkId)
     const networkData = Marketplace.networks[networkId]
     if(networkData) {
       const marketplace = new web3.eth.Contract(Marketplace.abi, networkData.address)
@@ -133,6 +138,7 @@ class App extends Component {
       this.setState({ loading: false })
     })
   }
+  
 
   render() {
     return (
