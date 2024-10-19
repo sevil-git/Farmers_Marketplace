@@ -43,7 +43,7 @@ class Login extends Component {
     const farmer = this.props.farmers.find(farmer => {
       console.log("Farmer ID:", farmer.id);
       console.log("Farmer Phone:", farmer.phone);
-      return farmer.id.toString() === user_id && farmer.phone.toString() === user_password;
+      return farmer.name === user_id && farmer.phone.toString() === user_password;
     });
   
     if (farmer) {
