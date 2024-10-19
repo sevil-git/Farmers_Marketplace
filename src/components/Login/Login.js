@@ -35,18 +35,24 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { user_id, user_password } = this.state.loginParams;
-
+  
+    console.log("Entered ID:", user_id);
+    console.log("Entered Phone:", user_password);
+  
     // Find the farmer with matching credentials
-    const farmer = this.props.farmers.find(farmer => 
-      farmer.id.toString() === user_id && farmer.phone.toString() === user_password
-    );
-
+    const farmer = this.props.farmers.find(farmer => {
+      console.log("Farmer ID:", farmer.id);
+      console.log("Farmer Phone:", farmer.phone);
+      return farmer.id.toString() === user_id && farmer.phone.toString() === user_password;
+    });
+  
     if (farmer) {
       this.login(farmer.id);
     } else {
       this.setState({ errorMessage: "Invalid ID or Phone Number" });
     }
   };
+  
 
   render() {
     if (localStorage.getItem("token")) {

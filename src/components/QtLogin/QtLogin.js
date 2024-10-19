@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import "./Login.css";
 import { Redirect } from "react-router-dom";
+
 class QtLogin extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +9,11 @@ class QtLogin extends Component {
       loginParams: {
         user_id: "",
         user_password: ""
-      }
+      },
+      errorMsg: ""
     };
   }
+
   handleFormChange = event => {
     let loginParamsNew = { ...this.state.loginParams };
     let val = event.target.value;
@@ -20,50 +22,46 @@ class QtLogin extends Component {
       loginParams: loginParamsNew
     });
   };
- 
-  
-  login = event => {
+
+  login = () => {
     let user_id = this.state.loginParams.user_id;
     let user_password = this.state.loginParams.user_password;
-   
-    // if (user_id === farmer.id.toString() && user_password === farmer.phone.toString()) {
-      localStorage.setItem("qtoken", "T");
-      localStorage.setItem("qsession", user_id);
-      console.log(localStorage.getItem("qtoken"))
-      console.log(localStorage.getItem("qsession"))
-      this.setState({
-        islogged: true
-      });
-    
+
+    // Store session token and user ID
+    localStorage.setItem("qtoken", "T");
+    localStorage.setItem("qsession", user_id);
+
+    console.log(localStorage.getItem("qtoken"));
+    console.log(localStorage.getItem("qsession"));
+
+    this.setState({
+      islogged: true
+    });
   };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    
+    const { user_id, user_password } = this.state.loginParams;
+    const matchedQtUser = this.props.qtestings.find(
+      (qtesting) => qtesting.name === user_id && qtesting.city === user_password
+    );
+
+    if (matchedQtUser) {
+      this.login();
+    } else {
+      this.setState({ errorMsg: "Invalid name or city" });
+    }
+  };
+
   render() {
     if (localStorage.getItem("qtoken")) {
       return <Redirect to="/QTesting" />;
     }
+
     return (
       <div className="container">
-        <form onSubmit={(event) => {
-              event.preventDefault()   
-              let user_id = this.state.loginParams.user_id;
-              let user_password = this.state.loginParams.user_password;
-              const id = this.FarmerID.value
-              const ph = this.PhoneNo.value
-              {this.props.qtestings.map((qtesting, key) => {
-                return(
-                  <p>Your Register ID is {qtesting.id}</p>
-                  )
-              })}
-              this.props.qtestings.map((qtesting, key) => {
-                return(qtesting.name==user_id && qtesting.city==user_password
-                  ?
-                  this.login()
-                  
-                  :
-                  console.log(qtesting.id)
-                  
-                  )
-              })
-            }} className="form-signin">
+        <form onSubmit={this.handleSubmit} className="form-signin">
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
           <div className="row">
             <div className="col">
@@ -76,7 +74,8 @@ class QtLogin extends Component {
                   onChange={this.handleFormChange}
                   className="form-control"
                   placeholder="name"
-                  required />
+                  required
+                />
               </div>
               <div className="form-group mr-sm-2">
                 <input
@@ -87,15 +86,22 @@ class QtLogin extends Component {
                   onChange={this.handleFormChange}
                   className="form-control"
                   placeholder="city"
-                  required />
+                  required
+                />
               </div>
               <button type="submit" className="btn btn-primary">Login</button>
             </div>
           </div>
+
+          {this.state.errorMsg && (
+            <div className="alert alert-danger mt-2">{this.state.errorMsg}</div>
+          )}
         </form>
-        <p>Don't have Account..?<a href="/QtRegister">Click here</a></p>
+
+        <p>Don't have Account..? <a href="/QtRegister">Click here</a></p>
       </div>
     );
   }
 }
+
 export default QtLogin;
