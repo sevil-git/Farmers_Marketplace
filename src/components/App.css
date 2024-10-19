@@ -1,1 +1,43 @@
-/* Styles go here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.themebody {
+    background-color: #1E1E1E;
+    height: 100vh;
+    margin-top: -3rem;
+    color: white;
+    position: relative;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;left: 0;
+}
+
+.w50 {
+    width: 50%;
+    height: 100%;
+}
+
+.wfull {
+    width: 100vw;
+}
+
+.hscreen {
+    height: 100vh;
+}
+/* .w501 {
+    background: maroon;
+}
+.w502 {
+    background: burlywood;
+} */
+
+.img {
+    object-fit: clip;
+    max-height:100%; width:100%;
+}

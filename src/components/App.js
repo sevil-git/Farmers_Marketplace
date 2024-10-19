@@ -5,7 +5,8 @@ import './App.css';
 import Marketplace from '../abis/Marketplace.json'
 import Navbar from './Navbar/Navbar'
 import QTesting from './QTesting/QTesting'
-import Main from './Main/Main'
+import Buyer from './Buyer/Buyer'
+import Main from './Main/Main';
 import Farmer from './Farmer/Farmer'
 import Register from './Register/Register'
 import Login from './Login/Login';
@@ -141,9 +142,10 @@ class App extends Component {
   
 
   render() {
+    const currentPath = window.location.pathname;
     return (
-      <div>
-        <Navbar account={this.state.account} />
+      <div className='themebody'>
+        {currentPath !== '/' && <Navbar account={this.state.account} />}
         <div className="container-fluid mt-5">
           <div className="row">
             <Router>
@@ -157,6 +159,16 @@ class App extends Component {
                   purchaseProduct={this.purchaseProduct} />
                   }
                   </main>} />
+
+                <Route path="/Buyer" exact component={() => <main role="buyer" className="col-lg-12 d-flex">
+                { this.state.loading
+                ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
+                :<Buyer
+                products={this.state.products}
+                createProduct={this.createProduct}
+                purchaseProduct={this.purchaseProduct} />
+                }
+                </main>} />
           
                <Route path="/Farmer" exact component={() => <main role="farmer" className="col-lg-12 d-flex">
                   { this.state.loading
