@@ -157,7 +157,7 @@ class App extends Component {
                   }
                   </main>} />
 
-                <Route path="/Buyer" exact component={() => <main role="buyer" className=" d-flex">
+                <Route path="/Buyer" exact component={() => <main role="buyer" className="d-flex">
                 { this.state.loading
                 ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                 :<Buyer
@@ -177,7 +177,7 @@ class App extends Component {
                   }
                   </main>} />
                   
-                <Route path="/QTesting" exact component={() => <main role="Quality Testing" className=" d-flex">
+                <Route path="/QTesting" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<QTesting
@@ -187,7 +187,7 @@ class App extends Component {
                   }
                   </main>} />
 
-                <Route path="/Login" exact component={() => <main role="Quality Testing" className=" d-flex">
+                <Route path="/Login" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<Login
@@ -198,7 +198,7 @@ class App extends Component {
                   }
                   </main>} />
 
-                <Route path="/QtLogin" exact component={() => <main role="Quality Testing" className=" d-flex">
+                <Route path="/QtLogin" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<QtLogin
@@ -210,7 +210,7 @@ class App extends Component {
                   }
                   </main>} />
 
-                <Route path="/Register" exact component={() => <main role="Quality Testing" className=" d-flex">
+                <Route path="/Register" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<Register
@@ -220,7 +220,7 @@ class App extends Component {
                   }
                   </main>} />
 
-                <Route path="/QtRegister" exact component={() => <main role="Quality Testing" className=" d-flex">
+                <Route path="/QtRegister" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<QtRegister

@@ -97,7 +97,7 @@ class Farmer extends Component{
             <th scope="col">Quality approved</th>
           </tr>
         </thead>
-        <tbody id="productList">
+        <tbody id="productList" className='productlist'>
           { this.props.products.map((product, key) => {
             return(product.farmerID.toString()==localStorage.getItem("session")
               ?
