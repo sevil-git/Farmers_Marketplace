@@ -41,9 +41,9 @@ class Login extends Component {
   
     // Find the farmer with matching credentials
     const farmer = this.props.farmers.find(farmer => {
-      console.log("Farmer ID:", farmer.id);
+      console.log("Farmer ID:", farmer.name);
       console.log("Farmer Phone:", farmer.phone);
-      return farmer.id.toString() === user_id && farmer.phone.toString() === user_password;
+      return farmer.name === user_id && farmer.phone.toString() === user_password;
     });
   
     if (farmer) {
@@ -60,9 +60,9 @@ class Login extends Component {
     }
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="form-signin">
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <div className="container bg-green-700">
+        <form onSubmit={this.handleSubmit} className="form-signin flex flex-row ">
+          <h1 className="h4 mb-3 text-3xl font-weight-normal">Please sign in</h1>
           <div className="row">
             <div className="col">
               <div className="form-group mr-sm-2">

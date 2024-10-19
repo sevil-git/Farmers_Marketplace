@@ -167,6 +167,28 @@ class App extends Component {
                   purchaseProduct={this.purchaseProduct} />
                   }
                   </main>} />
+
+                  <Route path="/User" exact component={() => <main role="User" className="col-lg-12 d-flex">
+                  { this.state.loading
+                  ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
+                  :<Farmer
+                  products={this.state.products}
+                  createProduct={this.createProduct}
+                  purchaseProduct={this.purchaseProduct} />
+                  }
+                  </main>} />
+                  
+                  
+                  <Route path="/Admin" exact component={() => <main role="Admin" className="col-lg-12 d-flex">
+                  { this.state.loading
+                  ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
+                  :<Farmer
+                  products={this.state.products}
+                  createProduct={this.createProduct}
+                  purchaseProduct={this.purchaseProduct} />
+                  }
+                  </main>} />
+                  
                   
                 <Route path="/QTesting" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading

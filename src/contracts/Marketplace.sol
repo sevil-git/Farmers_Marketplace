@@ -37,7 +37,8 @@ contract Marketplace {
         uint id,
         string name,
         string city,
-        uint phone
+        uint phone,
+        uint password
     );
 
     event QTestingRegisterd (
@@ -83,13 +84,13 @@ contract Marketplace {
         name = "Farmer Marketplace";
     }
 
-    function farmerRegister(string memory _name, uint _phone, string memory _city) public {
+    function farmerRegister(string memory _name, uint _phone, string memory _city, uint _password) public {
         require(bytes(_name).length > 0);
         require(bytes(_city).length > 0);
         require(_phone > 0);
         farmerCount ++;
         farmers[farmerCount]=Farmer(farmerCount, _name, _city, _phone);
-        emit FarmerRegisterd(farmerCount, _name, _city, _phone);
+        emit FarmerRegisterd(farmerCount, _name, _city, _phone, _password);
     }
 
     function qtestingRegister(string memory _name, string memory _city) public {

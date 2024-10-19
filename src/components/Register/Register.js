@@ -1,5 +1,5 @@
 import React, { Component  } from 'react';
-import { Redirect, Switch, Route, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 
@@ -25,7 +25,8 @@ class Register extends Component{
               const name = this.farmerName.value
               const city = this.state.value
               const phone = this.phoneNumber.value.toString()
-              this.props.farmerRegister(name, phone, city)
+              const password = this.password.value.toString()
+              this.props.farmerRegister(name, phone, city, password)
             }}>
               <div className="form-group mr-sm-2">
                 <input
@@ -43,6 +44,15 @@ class Register extends Component{
                   ref={(input) => { this.phoneNumber = input }}
                   className="form-control"
                   placeholder="Phone Number"
+                  required />
+              </div>
+              <div className="form-group mr-sm-2">
+                <input
+                  id="password"
+                  type="password"
+                  ref={(input) => { this.password = input }}
+                  className="form-control"
+                  placeholder="Password"
                   required />
               </div>
                   <form>
