@@ -143,7 +143,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar account={this.state.account} />
+        {/* <Navbar account={this.state.account} /> */}
         <div className="container-fluid mt-5">
           <div className="row">
             <Router>
