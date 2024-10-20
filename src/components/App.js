@@ -11,6 +11,8 @@ import Register from './Register/Register'
 import Login from './Login/Login';
 import QtLogin from './QtLogin/QtLogin';
 import QtRegister from './QtRegister/QtRegister'
+import BuyerRegister from "./BuyerAuth/BuyerRegisteration"
+import BuyerLogin from "./BuyerAuth/BuyerLogin"
 
 class App extends Component {
   async componentWillMount() {
@@ -198,6 +200,17 @@ class App extends Component {
                   }
                   </main>} />
 
+                  <Route path="/BuyerLogin" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
+                  {this.state.loading
+                  ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
+                  :<BuyerLogin
+                  products={this.state.products}
+                  farmers={this.state.farmers}
+                  createProduct={this.createProduct}
+                  purchaseProduct={this.purchaseProduct} />
+                  }
+                  </main>} />
+
                 <Route path="/QtLogin" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
@@ -214,6 +227,16 @@ class App extends Component {
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<Register
+                  farmers={this.state.farmers}
+                  farmerRegister={this.farmerRegister}
+                  purchaseProduct={this.purchaseProduct} />
+                  }
+                  </main>} />
+
+                  <Route path="/BuyerRegister" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
+                  {this.state.loading
+                  ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
+                  :<BuyerRegister
                   farmers={this.state.farmers}
                   farmerRegister={this.farmerRegister}
                   purchaseProduct={this.purchaseProduct} />

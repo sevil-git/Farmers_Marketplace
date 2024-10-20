@@ -1,4 +1,5 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.0; // Change this to match Marketplace.sol
+
 
 contract Marketplace {
     string public name;
@@ -23,20 +24,15 @@ contract Marketplace {
     }
 
     struct Product {
-    uint id;
-    uint farmerID;
-    string name;
-    string city;
-    uint price;
-    string image;  // New field for the product image
-    string cultivationDate;  // New field for the cultivation date
-    uint quantity;  // New field for the quantity of the crop
-    string quality;  // New field for the quality description
-    address payable owner;
-    bool purchased;
-    bool approved;
+        uint id;
+        uint farmerID;
+        string name;
+        string city;
+        uint price;
+        address payable owner;
+        bool purchased;
+        bool approved;
     }
-
 
     event FarmerRegisterd (
         uint id,
@@ -105,29 +101,19 @@ contract Marketplace {
         emit QTestingRegisterd(qtCount, _name, _city);
     }
 
-    function createProduct(
-    uint _farmerid,
-    string memory _name,
-    uint _price,
-    string memory _city,
-    string memory _image,
-    string memory _cultivationDate,
-    uint _quantity,
-    string memory _quality
-    ) public {
-        // Add validation checks for new fields
+    function createProduct(uint _farmerid, string memory _name, uint _price, string memory _city) public {
+        // Require a valid name
         require(bytes(_name).length > 0);
         require(bytes(_city).length > 0);
-        require(bytes(_image).length > 0);
-        require(bytes(_cultivationDate).length > 0);
+        // Require a valid price
         require(_price > 0);
-        require(_quantity > 0);
-
+        // Increment product count
         productCount ++;
-        products[productCount] = Product(productCount, _farmerid, _name, _city, _price, _image, _cultivationDate, _quantity, _quality, msg.sender, false, false);
+        // Create the product
+        products[productCount] = Product(productCount, _farmerid, _name, _city, _price, msg.sender, false, false);
+        // Trigger an event
         emit ProductCreated(productCount, _farmerid, _name, _city, _price, msg.sender, false, false);
     }
-
 
     function qtapproval(uint _id, uint _qtprice) public payable {
         // Fetch the product
