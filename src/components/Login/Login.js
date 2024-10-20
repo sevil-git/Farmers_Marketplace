@@ -49,7 +49,7 @@ class Login extends Component {
     if (farmer) {
       this.login(farmer.id);
     } else {
-      this.setState({ errorMessage: "Invalid ID or Phone Number" });
+      this.setState({ errorMessage: "Invalid ID or Password" });
     }
   };
   
