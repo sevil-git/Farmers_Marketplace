@@ -36,10 +36,12 @@ class Farmer extends Component{
         return (
           <div id="content" className='farmContent'>
             <nav className='navv'>
-              <div className='logo'>
-                <img alt='logo' src={logo} />
-                <h2>Farmingo</h2>
-              </div>
+              <a href='/'>
+                <div className='logo'>
+                  <img alt='logo' src={logo} />
+                  <h2>Farmingo</h2>
+                </div>
+              </a>
               <div className='user'>
                 <div className='userbutton'>
                   <img alt='avatar' src={avatar}/>

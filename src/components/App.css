@@ -27,6 +27,13 @@ body {
     top: 0;left: 0;
 }
 
+.flexCenterR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .w50 {
 
     height: 100%;
@@ -48,6 +55,15 @@ body {
     align-items: center;
     margin-top: 2rem;
     margin-left: 1rem;
+    
+}
+
+.logo:hover{
+    text-decoration: none;
+}
+
+.w501 a {
+    text-decoration: none;
 }
 
 .logo > img {
@@ -58,6 +74,8 @@ body {
 .logo > h2 {
     font-size: 1.2rem;
     margin-top: 0.4rem;
+    color: white;  
+    text-decoration: none;
 }
 
 .heroHeading {
@@ -143,3 +161,13 @@ body {
     border-radius: 1rem 0 0 1rem;
 }
 
+.QtestingInput {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+}
+
+.navv >a {
+    text-decoration: none;
+}

@@ -11,10 +11,12 @@ const Main = () => {
     <div>
       <div className="flexCenter wfull hscreen">
         <div className="w50 w501">
-          <div className='logo'>
-            <img alt='logo' src={logo} />
-            <h2>Farmingo</h2>
-          </div>
+          <a href='/'>
+            <div className='logo'>
+              <img alt='logo' src={logo} />
+              <h2>Farmingo</h2>
+            </div>
+          </a>
           <div className='heroHeading'>
             <div className='heading_two'>
               <h2>Welcome to the future </h2>

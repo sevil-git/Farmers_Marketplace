@@ -61,44 +61,47 @@ class QtLogin extends Component {
 
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit} className="form-signin">
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <div className="row">
-            <div className="col">
-              <div className="form-group mr-sm-2">
-                <input
-                  id="FarmerID"
-                  name="user_id"
-                  type="text"
-                  ref={(input) => { this.FarmerID = input }}
-                  onChange={this.handleFormChange}
-                  className="form-control"
-                  placeholder="name"
-                  required
-                />
+        <div className="card glow">
+          <form onSubmit={this.handleSubmit} className="form-signin">
+            <h1 className="sgnhead h3 mb-3 font-weight-normal">Please sign in</h1>
+            <div className="row">
+              <div className="col">
+                <div className="form-group mr-sm-2">
+                  <input
+                    id="FarmerID"
+                    name="user_id"
+                    type="text"
+                    ref={(input) => { this.FarmerID = input }}
+                    onChange={this.handleFormChange}
+                    className="form-control"
+                    placeholder="name"
+                    required
+                  />
+                </div>
+                <div className="form-group mr-sm-2">
+                  <input
+                    id="FarmerID"
+                    name="user_password"
+                    type="password"
+                    ref={(input) => { this.PhoneNo = input }}
+                    onChange={this.handleFormChange}
+                    className="form-control"
+                    placeholder="city"
+                    required
+                  />
+                </div>
+                <button type="submit" className="btnn">Login</button>
               </div>
-              <div className="form-group mr-sm-2">
-                <input
-                  id="FarmerID"
-                  name="user_password"
-                  type="password"
-                  ref={(input) => { this.PhoneNo = input }}
-                  onChange={this.handleFormChange}
-                  className="form-control"
-                  placeholder="city"
-                  required
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">Login</button>
             </div>
-          </div>
 
-          {this.state.errorMsg && (
-            <div className="alert alert-danger mt-2">{this.state.errorMsg}</div>
-          )}
-        </form>
+            {this.state.errorMsg && (
+              <div className="alert alert-danger mt-2">{this.state.errorMsg}</div>
+            )}
+          </form>
 
-        <p>Don't have Account..? <a href="/QtRegister">Click here</a></p>
+          <p>Don't have Account..? <a href="/QtRegister">Click here</a></p>
+        </div>
+        
       </div>
     );
   }

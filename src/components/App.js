@@ -177,7 +177,7 @@ class App extends Component {
                   }
                   </main>} />
                   
-                <Route path="/QTesting" exact component={() => <main role="Quality Testing" className="col-lg-12 d-flex">
+                <Route path="/QTesting" exact component={() => <main role="Quality Testing" className="d-flex">
                   {this.state.loading
                   ?<div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
                   :<QTesting
